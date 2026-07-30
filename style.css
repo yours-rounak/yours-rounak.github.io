@@ -1,0 +1,575 @@
+/* ===========================================
+   ROUNAK PAUL PREMIUM PORTFOLIO
+   STYLE.CSS - PART 1
+=========================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#111;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#ff1f4b;
+    border-radius:20px;
+
+}
+
+/* Animated Background */
+
+.background{
+
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    overflow:hidden;
+
+}
+
+/* Red Liquid Gradient */
+
+.gradient{
+
+    position:absolute;
+
+    width:220%;
+    height:220%;
+
+    left:-60%;
+    top:-60%;
+
+    background:
+
+    radial-gradient(circle,#ff003c33 0%,transparent 35%),
+    radial-gradient(circle,#ff000022 25%,transparent 55%),
+    radial-gradient(circle,#6e0000 0%,transparent 65%);
+
+    animation:flow 18s ease-in-out infinite;
+
+    filter:blur(70px);
+
+}
+
+@keyframes flow{
+
+0%{
+
+transform:
+rotate(0deg)
+scale(1);
+
+}
+
+50%{
+
+transform:
+rotate(180deg)
+scale(1.15);
+
+}
+
+100%{
+
+transform:
+rotate(360deg)
+scale(1);
+
+}
+
+}
+
+/* Navbar */
+
+header{
+
+position:fixed;
+
+top:0;
+
+width:100%;
+
+padding:18px 9%;
+
+backdrop-filter:blur(14px);
+
+background:rgba(0,0,0,.25);
+
+border-bottom:1px solid rgba(255,255,255,.08);
+
+z-index:1000;
+
+}
+
+nav{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.logo{
+
+font-size:28px;
+
+font-weight:700;
+
+letter-spacing:1px;
+
+color:#fff;
+
+text-shadow:
+
+0 0 15px #ff003c,
+
+0 0 35px #ff003c;
+
+}
+
+nav ul{
+
+display:flex;
+
+list-style:none;
+
+gap:35px;
+
+}
+
+nav a{
+
+color:white;
+
+text-decoration:none;
+
+font-size:17px;
+
+transition:.35s;
+
+position:relative;
+
+}
+
+nav a:hover{
+
+color:#ff325f;
+
+}
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-5px;
+
+width:0;
+
+height:2px;
+
+background:#ff325f;
+
+transition:.4s;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+/* Hero */
+
+.hero{
+
+min-height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+padding:120px 10%;
+
+gap:60px;
+
+}
+
+.hero-left{
+
+max-width:650px;
+
+}
+
+.hero-left h1{
+
+font-size:65px;
+
+font-weight:700;
+
+line-height:1.2;
+
+}
+
+.hero-left span{
+
+color:#ff2d55;
+
+text-shadow:
+
+0 0 20px #ff003c;
+
+}
+
+.hero-left h2{
+
+margin-top:20px;
+
+font-size:34px;
+
+font-weight:500;
+
+color:#ff7b92;
+
+}
+
+.hero-left p{
+
+margin:30px 0;
+
+font-size:18px;
+
+line-height:1.8;
+
+color:#ddd;
+
+}
+
+/* Button */
+
+.btn{
+
+display:inline-block;
+
+padding:15px 35px;
+
+border-radius:40px;
+
+background:#ff1848;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:600;
+
+transition:.4s;
+
+box-shadow:
+
+0 0 20px #ff003c;
+
+}
+
+.btn:hover{
+
+transform:translateY(-5px);
+
+box-shadow:
+
+0 0 40px #ff003c;
+
+}
+/* ===========================================
+   STYLE.CSS - PART 2
+   Profile | About | Passion
+===========================================*/
+
+/* ---------- Profile Photo ---------- */
+
+.hero-right{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.photo-box{
+    position:relative;
+    width:380px;
+    height:380px;
+    border-radius:50%;
+    padding:8px;
+    animation:floatPhoto 6s ease-in-out infinite;
+}
+
+/* Rotating Neon Ring */
+
+.photo-box::before{
+
+    content:"";
+
+    position:absolute;
+    inset:-8px;
+
+    border-radius:50%;
+
+    background:conic-gradient(
+
+        #ff003c,
+        #ff3d6d,
+        #700018,
+        #ff003c
+
+    );
+
+    animation:spin 8s linear infinite;
+
+    filter:blur(2px);
+
+}
+
+.photo-box::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    border-radius:50%;
+
+    background:#050505;
+
+}
+
+.photo-box img{
+
+    position:relative;
+
+    z-index:5;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    border-radius:50%;
+
+    animation:photoFade 8s infinite;
+
+    box-shadow:
+
+    0 0 35px #ff003c,
+    0 0 70px #8d001f;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes floatPhoto{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+@keyframes photoFade{
+
+0%,40%,100%{
+
+opacity:1;
+
+}
+
+50%{
+
+opacity:.65;
+
+}
+
+}
+
+/* ---------- Section ---------- */
+
+section{
+
+padding:110px 10%;
+
+}
+
+.section-title{
+
+text-align:center;
+
+font-size:42px;
+
+margin-bottom:55px;
+
+color:#fff;
+
+text-shadow:
+
+0 0 20px crimson;
+
+}
+
+/* ---------- About ---------- */
+
+.about-card{
+
+max-width:900px;
+
+margin:auto;
+
+padding:40px;
+
+border-radius:25px;
+
+background:rgba(255,255,255,.06);
+
+backdrop-filter:blur(18px);
+
+border:1px solid rgba(255,255,255,.08);
+
+line-height:2;
+
+font-size:18px;
+
+box-shadow:
+
+0 0 30px rgba(255,0,60,.25);
+
+transition:.4s;
+
+}
+
+.about-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:
+
+0 0 45px rgba(255,0,60,.45);
+
+}
+
+/* ---------- Passion Cards ---------- */
+
+.cards{
+
+display:grid;
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(230px,1fr));
+
+gap:30px;
+
+}
+
+.card{
+
+padding:35px;
+
+border-radius:25px;
+
+text-align:center;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
+
+transition:.4s;
+
+border:1px solid rgba(255,255,255,.08);
+
+}
+
+.card:hover{
+
+transform:
+
+translateY(-10px)
+scale(1.03);
+
+box-shadow:
+
+0 0 40px crimson;
+
+}
+
+.card i{
+
+font-size:45px;
+
+margin-bottom:20px;
+
+color:#ff2f5d;
+
+text-shadow:
+
+0 0 20px crimson;
+
+}
+
+.card h3{
+
+margin-bottom:15px;
+
+font-size:24px;
+
+}
+
+.card p{
+
+color:#d9d9d9;
+
+line-height:1.8;
+
+}
