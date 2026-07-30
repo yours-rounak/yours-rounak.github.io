@@ -1,123 +1,255 @@
-/* ===========================================
-   ROUNAK PAUL PREMIUM PORTFOLIO
+/* ==========================================
+   ROUNAK PAUL PORTFOLIO V2
    STYLE.CSS - PART 1
-=========================================== */
+========================================== */
+
+:root{
+
+    --bg:#070707;
+    --bg2:#111111;
+    --red:#ff003c;
+    --red2:#ff335f;
+    --white:#ffffff;
+    --gray:#c8c8c8;
+
+}
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
     scroll-behavior:smooth;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
-    background:#050505;
-    color:white;
-    overflow-x:hidden;
+background:var(--bg);
+
+color:white;
+
+font-family:Poppins,sans-serif;
+
+overflow-x:hidden;
 
 }
 
 /* Scrollbar */
 
 ::-webkit-scrollbar{
-    width:10px;
-}
 
-::-webkit-scrollbar-track{
-    background:#111;
+width:9px;
+
 }
 
 ::-webkit-scrollbar-thumb{
 
-    background:#ff1f4b;
-    border-radius:20px;
+background:var(--red);
+
+border-radius:30px;
 
 }
 
-/* Animated Background */
+::-webkit-scrollbar-track{
 
-.background{
-
-    position:fixed;
-    inset:0;
-    z-index:-5;
-    overflow:hidden;
+background:#0d0d0d;
 
 }
 
-/* Red Liquid Gradient */
+/* ===========================
+BACKGROUND
+=========================== */
 
-.gradient{
+.bg{
 
-    position:absolute;
+position:fixed;
 
-    width:220%;
-    height:220%;
+inset:0;
 
-    left:-60%;
-    top:-60%;
+z-index:-10;
 
-    background:
+overflow:hidden;
 
-    radial-gradient(circle,#ff003c33 0%,transparent 35%),
-    radial-gradient(circle,#ff000022 25%,transparent 55%),
-    radial-gradient(circle,#6e0000 0%,transparent 65%);
-
-    animation:flow 18s ease-in-out infinite;
-
-    filter:blur(70px);
+background:#050505;
 
 }
 
-@keyframes flow{
+.liquid{
+
+position:absolute;
+
+width:250%;
+
+height:250%;
+
+left:-70%;
+
+top:-70%;
+
+filter:blur(90px);
+
+background:
+
+radial-gradient(circle at 30% 30%,
+rgba(255,0,60,.30),
+transparent 20%),
+
+radial-gradient(circle at 70% 50%,
+rgba(120,0,0,.35),
+transparent 25%),
+
+radial-gradient(circle at 40% 80%,
+rgba(255,0,0,.20),
+transparent 30%);
+
+animation:liquidMove 22s ease-in-out infinite;
+
+}
+
+@keyframes liquidMove{
 
 0%{
 
-transform:
-rotate(0deg)
-scale(1);
+transform:rotate(0deg) scale(1);
 
 }
 
 50%{
 
-transform:
-rotate(180deg)
-scale(1.15);
+transform:rotate(180deg) scale(1.25);
 
 }
 
 100%{
 
-transform:
-rotate(360deg)
-scale(1);
+transform:rotate(360deg) scale(1);
 
 }
 
 }
 
-/* Navbar */
+/* Floating particles */
+
+.particles{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+background-image:
+
+radial-gradient(#ff335522 1px,transparent 1px);
+
+background-size:60px 60px;
+
+animation:particleMove 30s linear infinite;
+
+opacity:.5;
+
+}
+
+@keyframes particleMove{
+
+from{
+
+transform:translateY(0);
+
+}
+
+to{
+
+transform:translateY(-300px);
+
+}
+
+}
+
+/* ===========================
+LOADER
+=========================== */
+
+#loader{
+
+position:fixed;
+
+inset:0;
+
+background:#050505;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:99999;
+
+}
+
+.loader-logo{
+
+font-size:60px;
+
+font-weight:700;
+
+letter-spacing:8px;
+
+color:white;
+
+text-shadow:
+
+0 0 20px crimson,
+
+0 0 60px crimson;
+
+animation:pulse 2s infinite;
+
+}
+
+@keyframes pulse{
+
+50%{
+
+opacity:.4;
+
+transform:scale(.95);
+
+}
+
+}
+
+/* ===========================
+HEADER
+=========================== */
 
 header{
 
 position:fixed;
 
-top:0;
-
 width:100%;
 
-padding:18px 9%;
+padding:20px 8%;
 
-backdrop-filter:blur(14px);
+top:0;
+
+left:0;
 
 background:rgba(0,0,0,.25);
 
+backdrop-filter:blur(18px);
+
 border-bottom:1px solid rgba(255,255,255,.08);
 
-z-index:1000;
+z-index:999;
 
 }
 
@@ -137,15 +269,11 @@ font-size:28px;
 
 font-weight:700;
 
-letter-spacing:1px;
-
-color:#fff;
+color:white;
 
 text-shadow:
 
-0 0 15px #ff003c,
-
-0 0 35px #ff003c;
+0 0 15px crimson;
 
 }
 
@@ -161,21 +289,15 @@ gap:35px;
 
 nav a{
 
-color:white;
-
 text-decoration:none;
 
-font-size:17px;
+color:white;
 
 transition:.35s;
 
+font-weight:500;
+
 position:relative;
-
-}
-
-nav a:hover{
-
-color:#ff325f;
 
 }
 
@@ -187,15 +309,21 @@ position:absolute;
 
 left:0;
 
-bottom:-5px;
+bottom:-6px;
 
 width:0;
 
 height:2px;
 
-background:#ff325f;
+background:var(--red);
 
 transition:.4s;
+
+}
+
+nav a:hover{
+
+color:var(--red2);
 
 }
 
@@ -205,7 +333,9 @@ width:100%;
 
 }
 
-/* Hero */
+/* ===========================
+HERO
+=========================== */
 
 .hero{
 
@@ -213,43 +343,53 @@ min-height:100vh;
 
 display:flex;
 
-align-items:center;
-
 justify-content:space-between;
 
-padding:120px 10%;
+align-items:center;
 
-gap:60px;
+padding:120px 8%;
+
+gap:80px;
 
 }
 
-.hero-left{
+.left{
 
 max-width:650px;
 
 }
 
-.hero-left h1{
+.hello{
 
-font-size:65px;
+color:#aaa;
+
+font-size:20px;
+
+margin-bottom:15px;
+
+}
+
+.left h2{
+
+font-size:72px;
 
 font-weight:700;
 
-line-height:1.2;
+line-height:1.1;
 
 }
 
-.hero-left span{
+.left span{
 
-color:#ff2d55;
+color:var(--red2);
 
 text-shadow:
 
-0 0 20px #ff003c;
+0 0 25px crimson;
 
 }
 
-.hero-left h2{
+#typing{
 
 margin-top:20px;
 
@@ -257,45 +397,43 @@ font-size:34px;
 
 font-weight:500;
 
-color:#ff7b92;
+color:#ff8ca4;
 
 }
 
-.hero-left p{
+.intro{
 
-margin:30px 0;
+margin:35px 0;
 
 font-size:18px;
 
-line-height:1.8;
+line-height:2;
 
-color:#ddd;
+color:#d5d5d5;
 
 }
-
-/* Button */
 
 .btn{
 
 display:inline-block;
 
-padding:15px 35px;
+padding:15px 40px;
 
 border-radius:40px;
 
-background:#ff1848;
-
-color:white;
+background:linear-gradient(90deg,#ff003c,#b0002b);
 
 text-decoration:none;
 
+color:white;
+
 font-weight:600;
 
-transition:.4s;
+transition:.35s;
 
 box-shadow:
 
-0 0 20px #ff003c;
+0 0 30px rgba(255,0,60,.45);
 
 }
 
@@ -305,105 +443,74 @@ transform:translateY(-5px);
 
 box-shadow:
 
-0 0 40px #ff003c;
+0 0 50px crimson;
 
 }
-/* ===========================================
+/* ==========================================
    STYLE.CSS - PART 2
-   Profile | About | Passion
-===========================================*/
+   PROFILE | ABOUT | PASSION
+==========================================*/
 
-/* ---------- Profile Photo ---------- */
+/* ===== Profile ===== */
 
-.hero-right{
+.right{
+    flex:1;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-.photo-box{
+.profile-glow{
     position:relative;
-    width:380px;
-    height:380px;
+    width:420px;
+    height:420px;
     border-radius:50%;
-    padding:8px;
-    animation:floatPhoto 6s ease-in-out infinite;
+    animation:float 6s ease-in-out infinite;
 }
 
-/* Rotating Neon Ring */
-
-.photo-box::before{
-
+.profile-glow::before{
     content:"";
-
     position:absolute;
-    inset:-8px;
-
+    inset:-12px;
     border-radius:50%;
-
     background:conic-gradient(
-
         #ff003c,
-        #ff3d6d,
-        #700018,
+        #ff4d73,
+        #8b0000,
         #ff003c
-
     );
-
-    animation:spin 8s linear infinite;
-
-    filter:blur(2px);
-
+    animation:rotateRing 8s linear infinite;
+    filter:blur(3px);
 }
 
-.photo-box::after{
-
+.profile-glow::after{
     content:"";
-
     position:absolute;
-
-    inset:8px;
-
+    inset:10px;
+    background:#080808;
     border-radius:50%;
-
-    background:#050505;
-
 }
 
-.photo-box img{
-
+.profile-glow img{
     position:relative;
-
     z-index:5;
-
     width:100%;
-
     height:100%;
-
     object-fit:cover;
-
     border-radius:50%;
-
-    animation:photoFade 8s infinite;
+    border:5px solid rgba(255,255,255,.08);
 
     box-shadow:
+    0 0 40px rgba(255,0,60,.5),
+    0 0 90px rgba(255,0,60,.35);
 
-    0 0 35px #ff003c,
-    0 0 70px #8d001f;
-
+    animation:
+        fadePhoto 8s ease-in-out infinite;
 }
 
-@keyframes spin{
+/* Floating */
 
-100%{
-
-transform:rotate(360deg);
-
-}
-
-}
-
-@keyframes floatPhoto{
+@keyframes float{
 
 0%,100%{
 
@@ -413,79 +520,117 @@ transform:translateY(0);
 
 50%{
 
-transform:translateY(-15px);
+transform:translateY(-18px);
 
 }
 
 }
 
-@keyframes photoFade{
+/* Rotating Ring */
 
-0%,40%,100%{
+@keyframes rotateRing{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/* Fade */
+
+@keyframes fadePhoto{
+
+0%,35%,100%{
+
+opacity:1;
+
+filter:brightness(1);
+
+}
+
+45%{
+
+opacity:.55;
+
+filter:brightness(.7);
+
+}
+
+55%{
 
 opacity:1;
 
 }
 
-50%{
-
-opacity:.65;
-
 }
 
-}
-
-/* ---------- Section ---------- */
+/* ===== Common Section ===== */
 
 section{
 
-padding:110px 10%;
+padding:120px 8%;
 
 }
 
-.section-title{
+.section-heading{
 
 text-align:center;
 
-font-size:42px;
-
-margin-bottom:55px;
-
-color:#fff;
-
-text-shadow:
-
-0 0 20px crimson;
+margin-bottom:70px;
 
 }
 
-/* ---------- About ---------- */
+.section-heading span{
 
-.about-card{
-
-max-width:900px;
-
-margin:auto;
-
-padding:40px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,.06);
-
-backdrop-filter:blur(18px);
-
-border:1px solid rgba(255,255,255,.08);
-
-line-height:2;
+color:#ff537a;
 
 font-size:18px;
 
+letter-spacing:2px;
+
+text-transform:uppercase;
+
+}
+
+.section-heading h2{
+
+font-size:48px;
+
+margin-top:12px;
+
+}
+
+/* ===== About ===== */
+
+.about-container{
+
+display:flex;
+
+justify-content:center;
+
+}
+
+.about-card{
+
+max-width:950px;
+
+padding:45px;
+
+border-radius:30px;
+
+background:rgba(255,255,255,.05);
+
+backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.45s;
+
 box-shadow:
 
-0 0 30px rgba(255,0,60,.25);
-
-transition:.4s;
+0 0 25px rgba(255,0,60,.15);
 
 }
 
@@ -495,25 +640,47 @@ transform:translateY(-8px);
 
 box-shadow:
 
-0 0 45px rgba(255,0,60,.45);
+0 0 45px rgba(255,0,60,.35);
 
 }
 
-/* ---------- Passion Cards ---------- */
+.about-card h3{
 
-.cards{
+font-size:32px;
+
+margin-bottom:20px;
+
+color:#ff4d73;
+
+}
+
+.about-card p{
+
+line-height:2;
+
+font-size:18px;
+
+color:#ddd;
+
+margin-bottom:18px;
+
+}
+
+/* ===== Passion ===== */
+
+.passion-grid{
 
 display:grid;
 
 grid-template-columns:
 
-repeat(auto-fit,minmax(230px,1fr));
+repeat(auto-fit,minmax(240px,1fr));
 
 gap:30px;
 
 }
 
-.card{
+.box{
 
 padding:35px;
 
@@ -521,17 +688,17 @@ border-radius:25px;
 
 text-align:center;
 
-background:rgba(255,255,255,.05);
+background:rgba(255,255,255,.04);
 
-backdrop-filter:blur(18px);
-
-transition:.4s;
+backdrop-filter:blur(15px);
 
 border:1px solid rgba(255,255,255,.08);
 
+transition:.45s;
+
 }
 
-.card:hover{
+.box:hover{
 
 transform:
 
@@ -540,17 +707,17 @@ scale(1.03);
 
 box-shadow:
 
-0 0 40px crimson;
+0 0 35px rgba(255,0,60,.35);
 
 }
 
-.card i{
+.box i{
 
-font-size:45px;
+font-size:46px;
 
 margin-bottom:20px;
 
-color:#ff2f5d;
+color:#ff2f61;
 
 text-shadow:
 
@@ -558,141 +725,149 @@ text-shadow:
 
 }
 
-.card h3{
+.box h3{
 
-margin-bottom:15px;
+font-size:25px;
 
-font-size:24px;
+margin-bottom:12px;
 
 }
 
-.card p{
+.box p{
 
-color:#d9d9d9;
+color:#cfcfcf;
 
 line-height:1.8;
 
 }
-/* ===========================================
+/* ==========================================
    STYLE.CSS - PART 3
-   Gallery | Dream | Contact | Footer
-===========================================*/
+   GALLERY | QUOTE | CONTACT | FOOTER
+==========================================*/
 
-/* ---------- Gallery ---------- */
+/* ==========================
+   GALLERY
+========================== */
 
-.gallery{
+.gallery-grid{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(300px,1fr));
+
     gap:30px;
+
 }
 
-.gallery img{
+.gallery-grid img{
 
     width:100%;
-    height:280px;
+
+    height:320px;
 
     object-fit:cover;
 
-    border-radius:22px;
-
-    border:2px solid rgba(255,255,255,.08);
-
-    transition:.5s;
-
-    box-shadow:
-    0 0 18px rgba(255,0,60,.25);
+    border-radius:24px;
 
     cursor:pointer;
 
-}
+    transition:.5s;
 
-.gallery img:nth-child(1){
+    border:2px solid rgba(255,255,255,.08);
 
-box-shadow:
-0 0 35px crimson;
-
-}
-
-.gallery img:nth-child(2){
-
-box-shadow:
-0 0 35px #ff7300;
+    box-shadow:
+    0 0 25px rgba(255,0,60,.18);
 
 }
 
-.gallery img:nth-child(3){
+.gallery-grid img:hover{
 
-box-shadow:
-0 0 35px #00ff99;
+    transform:
+    translateY(-10px)
+    scale(1.04);
 
-}
-
-.gallery img:nth-child(4){
-
-box-shadow:
-0 0 35px #009dff;
+    box-shadow:
+    0 0 50px crimson,
+    0 0 100px rgba(255,0,60,.45);
 
 }
 
-.gallery img:hover{
+/* Different Glow */
 
-transform:
+.gallery-grid img:nth-child(1){
 
-scale(1.08)
-rotate(-1deg);
-
-filter:
-
-brightness(1.12);
-
-box-shadow:
-
-0 0 55px crimson,
-0 0 90px crimson;
+box-shadow:0 0 35px crimson;
 
 }
 
-/* ---------- Dream ---------- */
+.gallery-grid img:nth-child(2){
 
-#dream{
+box-shadow:0 0 35px #ff7300;
+
+}
+
+.gallery-grid img:nth-child(3){
+
+box-shadow:0 0 35px #00ffaa;
+
+}
+
+.gallery-grid img:nth-child(4){
+
+box-shadow:0 0 35px #00a2ff;
+
+}
+
+.gallery-grid img:nth-child(5){
+
+box-shadow:0 0 35px #ff00ff;
+
+}
+
+.gallery-grid img:nth-child(6){
+
+box-shadow:0 0 35px gold;
+
+}
+
+/* ==========================
+QUOTE
+========================== */
+
+.quote{
+
+padding:140px 8%;
 
 text-align:center;
 
 }
 
-.dream-text{
+.quote h2{
 
-max-width:850px;
+max-width:950px;
 
 margin:auto;
 
-font-size:24px;
+font-size:34px;
 
-line-height:2;
+font-weight:600;
 
-font-style:italic;
+line-height:1.8;
 
-color:#f2f2f2;
+color:white;
 
-padding:45px;
+text-shadow:
 
-border-radius:30px;
-
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(15px);
-
-border:1px solid rgba(255,255,255,.08);
-
-box-shadow:
-
-0 0 30px rgba(255,0,60,.25);
+0 0 20px crimson;
 
 }
 
-/* ---------- Contact ---------- */
+/* ==========================
+CONTACT
+========================== */
 
-.socials{
+.social-links{
 
 display:flex;
 
@@ -702,15 +877,17 @@ gap:35px;
 
 flex-wrap:wrap;
 
-margin-top:40px;
+margin-top:60px;
 
 }
 
-.socials a{
+.social-links a{
 
-width:85px;
+width:90px;
 
-height:85px;
+height:90px;
+
+border-radius:50%;
 
 display:flex;
 
@@ -718,15 +895,17 @@ justify-content:center;
 
 align-items:center;
 
-border-radius:50%;
-
-font-size:32px;
-
-text-decoration:none;
+font-size:34px;
 
 color:white;
 
-background:rgba(255,255,255,.05);
+text-decoration:none;
+
+background:
+
+rgba(255,255,255,.05);
+
+backdrop-filter:blur(18px);
 
 border:1px solid rgba(255,255,255,.08);
 
@@ -734,41 +913,59 @@ transition:.45s;
 
 box-shadow:
 
-0 0 20px rgba(255,0,60,.20);
+0 0 25px rgba(255,0,60,.2);
 
 }
 
-.socials a:hover{
+.social-links a:hover{
 
 transform:
 
 translateY(-10px)
-scale(1.15);
+scale(1.12);
 
 background:crimson;
 
 box-shadow:
 
-0 0 45px crimson,
-0 0 80px crimson;
+0 0 50px crimson,
+0 0 90px crimson;
 
 }
 
-/* ---------- Footer ---------- */
+/* ==========================
+FOOTER
+========================== */
 
 footer{
 
-padding:40px;
+padding:60px 20px;
 
 text-align:center;
 
-border-top:1px solid rgba(255,255,255,.08);
+background:
 
-margin-top:80px;
+rgba(0,0,0,.35);
 
-background:rgba(0,0,0,.35);
+backdrop-filter:blur(18px);
 
-backdrop-filter:blur(15px);
+border-top:
+
+1px solid rgba(255,255,255,.08);
+
+}
+
+footer h2{
+
+font-size:34px;
+
+margin-bottom:20px;
+
+color:white;
+
+text-shadow:
+
+0 0 15px crimson;
 
 }
 
@@ -776,15 +973,17 @@ footer p{
 
 margin:10px;
 
-color:#d7d7d7;
+color:#cfcfcf;
 
 letter-spacing:1px;
 
 }
 
-/* ---------- Responsive ---------- */
+/* ==========================
+RESPONSIVE
+========================== */
 
-@media(max-width:950px){
+@media(max-width:1000px){
 
 .hero{
 
@@ -796,16 +995,16 @@ padding-top:170px;
 
 }
 
-.hero-left h1{
+.left h2{
 
-font-size:48px;
+font-size:54px;
 
 }
 
-.photo-box{
+.profile-glow{
 
-width:290px;
-height:290px;
+width:300px;
+height:300px;
 
 }
 
@@ -815,23 +1014,29 @@ display:none;
 
 }
 
-.section-title{
+.section-heading h2{
 
-font-size:34px;
+font-size:36px;
 
 }
 
 .about-card{
 
-padding:25px;
-
-font-size:16px;
+padding:28px;
 
 }
 
-.dream-text{
+.quote h2{
 
-font-size:20px;
+font-size:24px;
+
+}
+
+.social-links a{
+
+width:75px;
+height:75px;
+font-size:28px;
 
 }
 
